@@ -1,0 +1,11 @@
+<h1>Liste Cocktails :</h1>
+
+<div id="cocktails">
+<ul>
+<% @cocktails.each do |c| %>
+<li>
+<%= link_to c.name, cocktail_path(c.id) %>
+<% end %>
+</li>
+</ul>
+</div>
