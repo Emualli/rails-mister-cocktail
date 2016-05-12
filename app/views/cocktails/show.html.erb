@@ -1,8 +1,8 @@
-<h1><%= @cocktail.name %></h1>
+<h1><%= @cocktail.name.capitalize %></h1>
 
 <h3>Ingrédients :  <%= fa_icon 'plus', id: 'add-dose' %></h3>
 
-<%= simple_form_for ([@cocktail, @dose]) do |f| %>
+<%= simple_form_for [@cocktail, @dose], html: { id: :ingredients_form, style: "display: none;" } do |f| %>
 <%= f.input :ingredient_id, collection: @ingredients %>
 <%= f.input :description %>
 <%= f.submit %>
@@ -11,8 +11,8 @@
 <ul>
   <% @cocktail.doses.each do |d| %>
   <%= link_to (fa_icon 'trash-o'), cocktail_dose_path(@cocktail, d), method: :delete %>
-  <strong>Name :</strong><%= d.ingredient.name %>
-  <strong>Dose :</strong><%= d.description %>
+  <strong>Name : </strong><%= d.ingredient.name %>
+  <strong>Dose : </strong><%= d.description %>
   <br>
   <% end %>
 </ul>

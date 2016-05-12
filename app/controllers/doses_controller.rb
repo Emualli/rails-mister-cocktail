@@ -3,6 +3,7 @@ class DosesController < ApplicationController
     @dose = Dose.new(dose_params)
     @dose.cocktail_id = params[:cocktail_id]
     @dose.ingredient_id = params[:dose][:ingredient_id]
+    p @dose
     if @dose.save
       redirect_to cocktail_path(params[:cocktail_id]), notice: 'Creation successful'
     else
