@@ -1,6 +1,13 @@
 <h1><%= @cocktail.name %></h1>
 
-<h2>Ingrédients :</h2>
+<h3>Ingrédients :  <%= fa_icon 'plus', id: 'add-dose' %></h3>
+
+<%= simple_form_for ([@cocktail, @dose]) do |f| %>
+<%= f.input :ingredient_id, collection: @ingredients %>
+<%= f.input :description %>
+<%= f.submit %>
+<% end %>
+
 <ul>
   <% @cocktail.doses.each do |d| %>
   <strong>Name :</strong><%= d.ingredient.name %>
@@ -9,5 +16,4 @@
   <% end %>
 </ul>
 
-<div><%= link_to 'Ajouter un ingrédient', cocktails_path %></div>
 <div><%= link_to 'Retour aux cocktails', cocktails_path %></div>
