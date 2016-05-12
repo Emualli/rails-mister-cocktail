@@ -10,6 +10,7 @@
 
 <ul>
   <% @cocktail.doses.each do |d| %>
+  <%= link_to (fa_icon 'trash-o'), cocktail_dose_path(@cocktail, d), method: :delete %>
   <strong>Name :</strong><%= d.ingredient.name %>
   <strong>Dose :</strong><%= d.description %>
   <br>
